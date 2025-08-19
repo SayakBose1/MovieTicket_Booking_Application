@@ -44,8 +44,4 @@ const syncUserUpdation = inngest.createFunction(
     await User.findByIdAndUpdate(id, userData);
   }
 );
-export const functions = [
-  syncUserCreation,
-  syncUserDeletion,
-  syncUserUpdation,
-];
+export const functions = [syncUserCreation, syncUserDeletion, syncUserUpdation];
