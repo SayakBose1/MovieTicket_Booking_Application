@@ -190,7 +190,7 @@
 
 // export default SeatLayout;
 import React, { useEffect, useState } from "react";
-import { useNavigate, useParams } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import { assets } from "../assets/assets";
 import Loading from "../components/Loading";
 import { ArrowRightIcon, ClockIcon } from "lucide-react";
@@ -211,7 +211,6 @@ const SeatLayout = () => {
   const [selectedSeats, setSelectedSeats] = useState([]);
   const [selectedTime, setSelectedTime] = useState(null);
   const [show, setShow] = useState(null);
-  const navigate = useNavigate();
   const { axios, getToken, user } = useAppContext();
   const [occupiedSeats, setOccupiedSeats] = useState([]);
 
