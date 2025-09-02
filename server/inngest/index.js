@@ -108,6 +108,50 @@ const releaseSeatsAndDeleteBooking = inngest.createFunction(
 //   }
 // );
 
+// const sendBookingConfirmationEmail = inngest.createFunction(
+//   { id: "send-booking-confirmation-email" },
+//   { event: "app/show.booked" },
+//   async ({ event, step }) => {
+//     const { bookingId } = event.data;
+
+//     if (!bookingId) {
+//       throw new Error("Missing bookingId in event.data");
+//     }
+
+//     const booking = await Booking.findById(bookingId)
+//       .populate({
+//         path: "show",
+//         populate: { path: "movie", model: "Movie" },
+//       })
+//       .populate("user");
+
+//     if (!booking || !booking.user?.email) {
+//       throw new Error("Booking or user email not found");
+//     }
+
+//     await sendEmail({
+//       to: booking.user.email,
+//       subject: `Payment Confirmation: "${booking.show.movie.title}" booked!`,
+//       body: `<div style="font-family: Arial, sans-serif; line-height: 1.5;">
+//  <h2>Hi ${booking.user.name},</h2>
+//  <p>Your booking for <strong style="color: #F84565;">"${
+//    booking.show.movie.title
+//  }"</strong> is confirmed.</p>
+//  <p>
+//  <strong>Date:</strong> ${new Date(
+//    booking.show.showDateTime
+//  ).toLocaleDateString("en-US", { timeZone: "Asia/Kolkata" })}<br/>
+//   <strong>Time:</strong> ${new Date(
+//     booking.show.showDateTime
+//   ).toLocaleTimeString("en-US", { timeZone: "Asia/Kolkata" })}<br/>
+//  </p>
+//  <p>Enjoy the show! 🍿</p>
+//  <p>Thanks for booking with us!<br/>- Sayak Bose</p>
+//  </div>`,
+//     });
+//   }
+// );
+
 const sendBookingConfirmationEmail = inngest.createFunction(
   { id: "send-booking-confirmation-email" },
   { event: "app/show.booked" },
@@ -118,36 +162,42 @@ const sendBookingConfirmationEmail = inngest.createFunction(
       throw new Error("Missing bookingId in event.data");
     }
 
-    const booking = await Booking.findById(bookingId)
-      .populate({
-        path: "show",
-        populate: { path: "movie", model: "Movie" },
-      })
-      .populate("user");
+    // Fetch booking and populate show -> movie
+    const booking = await Booking.findById(bookingId).populate({
+      path: "show",
+      populate: { path: "movie", model: "Movie" },
+    });
 
-    if (!booking || !booking.user?.email) {
-      throw new Error("Booking or user email not found");
+    if (!booking) {
+      throw new Error("Booking not found");
     }
 
+    // Fetch user manually since booking.user is Clerk ID (string)
+    const user = await User.findById(booking.user);
+    if (!user || !user.email) {
+      throw new Error("User or user email not found");
+    }
+
+    // Send email
     await sendEmail({
-      to: booking.user.email,
+      to: user.email,
       subject: `Payment Confirmation: "${booking.show.movie.title}" booked!`,
       body: `<div style="font-family: Arial, sans-serif; line-height: 1.5;">
- <h2>Hi ${booking.user.name},</h2>
- <p>Your booking for <strong style="color: #F84565;">"${
-   booking.show.movie.title
- }"</strong> is confirmed.</p>
- <p>
- <strong>Date:</strong> ${new Date(
-   booking.show.showDateTime
- ).toLocaleDateString("en-US", { timeZone: "Asia/Kolkata" })}<br/>
-  <strong>Time:</strong> ${new Date(
-    booking.show.showDateTime
-  ).toLocaleTimeString("en-US", { timeZone: "Asia/Kolkata" })}<br/>
- </p>
- <p>Enjoy the show! 🍿</p>
- <p>Thanks for booking with us!<br/>- Sayak Bose</p>
- </div>`,
+        <h2>Hi ${user.name},</h2>
+        <p>Your booking for <strong style="color: #F84565;">"${
+          booking.show.movie.title
+        }"</strong> is confirmed.</p>
+        <p>
+          <strong>Date:</strong> ${new Date(
+            booking.show.showDateTime
+          ).toLocaleDateString("en-US", { timeZone: "Asia/Kolkata" })}<br/>
+          <strong>Time:</strong> ${new Date(
+            booking.show.showDateTime
+          ).toLocaleTimeString("en-US", { timeZone: "Asia/Kolkata" })}<br/>
+        </p>
+        <p>Enjoy the show! 🍿</p>
+        <p>Thanks for booking with us!<br/>- Sayak Bose</p>
+      </div>`,
     });
   }
 );
