@@ -144,6 +144,15 @@ By default:
 
 ---
 
+## 🖼️ Screenshots
+
+### Home Page
+![Home Page](client/src/assets/homepage.png)
+
+
+---
+
+
 ## 🤝 Contributing
 
 Contributions are welcome! Please fork the repo and submit a pull request.  
