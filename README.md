@@ -24,16 +24,19 @@ Built with **React** + **Tailwind CSS** (frontend), **Express.js** (backend), **
 ## 🛠️ Tech Stack
 
 **Frontend:**  
- • React.js  
- • Tailwind CSS  
- • Axios  
+- ⚛️ React.js  
+- 🎨 Tailwind CSS  
+- 📡 Axios  
 
 **Backend:**  
- • Node.js  
- • Express.js  
- • Clerk  
- • MongoDB (Mongoose)  
- • Stripe
+- 🟢 Node.js  
+- 🚂 Express.js  
+- 🔑 Clerk  
+- 🗄️ MongoDB (Mongoose)  
+- 💳 Stripe  
+- ⚡ Inngest
+
+
 
 ---
 
