@@ -35,19 +35,27 @@ movie-ticket-booking/
 │
 ├── client/                # Frontend (React + Tailwind)
 │   └── src/
+│       ├── assets/        # Images, icons, fonts, etc.
 │       ├── components/    # Reusable UI components
+│       ├── context/       # React context providers
+│       ├── lib/           # Utility functions and libraries
 │       ├── pages/         # Pages (Home, Movies, Booking, Admin, etc.)
-│       ├── App.js
-│       └── index.js
+│       ├── App.jsx        # Main app component
+│       ├── index.css      # Global styles
+│       └── main.jsx       # Entry point
 │
 ├── server/                # Backend (Express + MongoDB + Stripe)
+│   ├── configs/           # Configurations (DB, Clerk, Stripe, Nodemailer)
+│   ├── controllers/       # Route handler functions
+│   ├── ingerest/          # Inngest functions
+│   ├── middleware/        # Express middlewares
 │   ├── models/            # Mongoose models (User, Movie, Booking)
 │   ├── routes/            # API routes (movies, bookings, payments)
-│   ├── configs/           # Configurations (Clerk, DB, Stripe, Nodemailer)
-│   └── index.js           # Entry point
+│   └── server.js           # Entry point
 │
 └── README.md
 ```
+
 
 ---
 
