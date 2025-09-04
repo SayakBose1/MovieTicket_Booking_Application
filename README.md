@@ -93,8 +93,7 @@ npm install
 
 ### 3. Setup Environment Variables
 
-Create a `.env` file inside the **server/** folder:
-
+#### Server (`server/.env`)
 ```
 MONGODB_URI=your_mongodb_connection_string
 CLERK_PUBLISHABLE_KEY=your_clerk_publishable_key
@@ -109,6 +108,15 @@ SENDER_EMAIL=your_sender_email
 SMTP_USER=your_smtp_user
 SMTP_PASS=your_smtp_password
 ```
+
+#### Client (`client/.env`)
+```
+VITE_CURRENCY='$'
+VITE_CLERK_PUBLISHABLE_KEY=your_clerk_publishable_key
+VITE_BASE_URL=http://localhost:3000       # URL of your backend server
+VITE_TMDB_IMAGE_BASE_URL=https://image.tmdb.org/t/p/original
+```
+
 
 
 ---
