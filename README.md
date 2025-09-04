@@ -79,15 +79,20 @@ npm install
 Create a `.env` file inside the **server/** folder:
 
 ```
-MONGO_URI=your_mongo_connection_string
-CLERK_SECRET_KEY=your_clerk_secret_key
+MONGODB_URI=your_mongodb_connection_string
 CLERK_PUBLISHABLE_KEY=your_clerk_publishable_key
+CLERK_SECRET_KEY=your_clerk_secret_key
+INNGEST_EVENT_KEY=your_inngest_event_key
+INNGEST_SIGNING_KEY=your_inngest_signing_key
+TMDB_API_KEY=your_tmdb_api_key
+STRIPE_PUBLISHABLE_KEY=your_stripe_publishable_key
 STRIPE_SECRET_KEY=your_stripe_secret_key
 STRIPE_WEBHOOK_SECRET=your_stripe_webhook_secret
-EMAIL_USER=your_email@example.com
-EMAIL_PASS=your_email_password
-PORT=5000
+SENDER_EMAIL=your_sender_email
+SMTP_USER=your_smtp_user
+SMTP_PASS=your_smtp_password
 ```
+
 
 ---
 
