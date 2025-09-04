@@ -33,7 +33,9 @@ Built with **React** + **Tailwind CSS** (frontend), **Express.js** (backend), **
 - 🚂 Express.js  
 - 🔑 Clerk  
 - 🗄️ MongoDB (Mongoose)  
-- 💳 Stripe
+- 💳 Stripe  
+- ⚡ Inngest
+
 
 
 ---
