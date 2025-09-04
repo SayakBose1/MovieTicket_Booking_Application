@@ -14,9 +14,9 @@ Built with **React** + **Tailwind CSS** (frontend), **Express.js** (backend), **
 - 🗄️ **Admin Dashboard** – Add movies and manage bookings  
 - 🎯 **Real-time Seat Selection** – Select seats with live availability  
 - 📱 **Mobile Responsive** – Optimized UI for mobile devices  
-- 📧 **Booking Confirmation Email** after successful payment (optional)  
+- 📧 **Booking Confirmation Email** after successful payment 
 - 🗄️ **MongoDB Database** for storing users, movies, and bookings  
-- ⚡ **REST API with Express.js** for smooth frontend–backend communication  
+- ⚡ **Express.js** for smooth frontend–backend communication  
 - 🎨 **Modern UI** with React + Tailwind CSS  
 
 ---
@@ -55,9 +55,10 @@ movie-ticket-booking/
 
 ### 1. Clone the repository
 ```bash
-git clone https://github.com/your-username/movie-ticket-booking.git
-cd movie-ticket-booking
+git clone https://github.com/SayakBose1/MovieTicket_Booking_Application.git
+cd MovieTicket_Booking_Application
 ```
+
 
 ### 2. Install dependencies
 
@@ -95,13 +96,13 @@ PORT=5000
 Start Backend:
 ```bash
 cd server
-npm run dev
+npm run server
 ```
 
 Start Frontend:
 ```bash
 cd client
-npm start
+npm run dev
 ```
 
 By default:  
